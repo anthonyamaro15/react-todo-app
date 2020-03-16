@@ -1,0 +1,30 @@
+.container {
+  border: 1px solid red;
+  width: 600px;
+  margin: 10rem auto;
+
+  form {
+    width: 100%;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: space-around;
+
+    input {
+      display: inline-block;
+      width: 50%;
+      font-size: 1rem;
+      padding: 0.3rem;
+      outline: none;
+    }
+
+    button {
+      outline: none;
+      font-size: 1rem;
+      border: none;
+      background: green;
+      padding: 0.3rem 2rem;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
