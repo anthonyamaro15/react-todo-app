@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-const Form = ({ createTodo }) => {
+const Form = ({ createTodo, editVal, editing }) => {
   const [value, setValue] = useState("");
+  console.log(editing);
 
   const handleChange = e => {
     let val = ([e.target.name] = e.target.value);
@@ -12,7 +13,6 @@ const Form = ({ createTodo }) => {
     e.preventDefault();
     createTodo(value);
     setValue("");
-    console.log(value);
   };
 
   return (
@@ -21,7 +21,7 @@ const Form = ({ createTodo }) => {
         type="text"
         name="todo"
         id="todo"
-        value={value}
+        value={editing ? editVal : value}
         onChange={handleChange}
       />
       <button type="submit">Add</button>

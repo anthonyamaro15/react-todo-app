@@ -5,6 +5,8 @@ import uuid from "uuid/v4";
 
 const MainApp = () => {
   const [data, setData] = useState([]);
+  const [editVal, setEditVal] = useState("");
+  const [editing, setEditing] = useState(false);
 
   useEffect(() => {
     const todoData = JSON.parse(localStorage.getItem("data"));
@@ -30,16 +32,31 @@ const MainApp = () => {
     setData(newData);
   };
 
+  const editTodo = id => {
+    const filtered = data.filter(item => item.id !== id);
+    const selected = data.find(item => item.id === id);
+    const newData = {
+      todo: editVal,
+      id
+    };
+    console.log(newData);
+
+    setEditVal(selected.todo);
+    setEditing(!editing);
+    setData([...filtered, newData]);
+  };
+
   return (
     <div className="container">
       <h1>Todo App</h1>
-      <Form createTodo={createTodo} />
+      <Form createTodo={createTodo} editVal={editVal} editing={editing} />
       <section className="todo-section">
         {data.map(todo => (
           <NewTodo
             key={todo.id}
             todo={todo}
             deleteTodo={() => deleteTodo(todo.id)}
+            editTodo={() => editTodo(todo.id)}
           />
         ))}
       </section>
