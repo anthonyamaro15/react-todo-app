@@ -1,0 +1,56 @@
+.container {
+  h1 {
+    text-align: center;
+  }
+  width: 500px;
+  margin: 5rem auto;
+
+  form {
+    width: 80%;
+    margin: 3rem auto;
+    display: flex;
+    justify-content: center;
+
+    input {
+      display: inline-block;
+      width: 50%;
+      font-size: 1rem;
+      padding: 0.3rem;
+      outline: none;
+    }
+
+    button {
+      outline: none;
+      font-size: 1rem;
+      border: none;
+      background: green;
+      padding: 0.3rem 2rem;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  .todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    background: #f4f4f4;
+
+    .icons {
+      span {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+
+        &:first-child {
+          margin-right: 0.5rem;
+          color: red;
+        }
+      }
+    }
+  }
+}
