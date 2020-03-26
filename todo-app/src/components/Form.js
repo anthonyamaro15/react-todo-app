@@ -1,32 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
+import { withFormik, Form, Field } from "formik";
 
-const Form = ({ createTodo, editVal, editing }) => {
-  const [value, setValue] = useState("");
-  console.log(editing);
+import uuid from "uuid/v4";
 
-  const handleChange = e => {
-    let val = ([e.target.name] = e.target.value);
-    setValue(val);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    createTodo(value);
-    setValue("");
-  };
+const MainForm = ({ createTodo, status }) => {
+  useEffect(() => {
+    status && createTodo(status);
+  }, [status, createTodo]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="todo"
-        id="todo"
-        value={editing ? editVal : value}
-        onChange={handleChange}
-      />
+    <Form>
+      <Field type="text" name="todo" id="todo" />
       <button type="submit">Add</button>
-    </form>
+    </Form>
   );
 };
 
-export default Form;
+export default withFormik({
+  mapPropsToValues: () => ({
+    todo: ""
+  }),
+  handleSubmit: (values, { resetForm, setStatus }) => {
+    const obj = {
+      id: uuid(),
+      todo: values.todo
+    };
+    setStatus(obj);
+    resetForm();
+  }
+})(MainForm);
