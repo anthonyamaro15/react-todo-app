@@ -3,7 +3,7 @@ import { withFormik, Form, Field } from "formik";
 
 import uuid from "uuid/v4";
 
-const MainForm = ({ createTodo, editVal, editing, status }) => {
+const MainForm = ({ createTodo, status }) => {
   useEffect(() => {
     status && createTodo(status);
   }, [status, createTodo]);
@@ -26,7 +26,6 @@ export default withFormik({
       todo: values.todo
     };
     setStatus(obj);
-    //  console.log(obj);
     resetForm();
   }
 })(MainForm);
