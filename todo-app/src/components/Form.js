@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const Form = ({ createTodo, editVal, editing }) => {
   const [value, setValue] = useState("");
-  console.log(editing);
+  //   console.log(editing);
 
   const handleChange = e => {
     let val = ([e.target.name] = e.target.value);
