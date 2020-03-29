@@ -13,7 +13,7 @@ export const todoReducer = (state = initialValue, action) => {
       const removeTodo = state.data.filter(
         item => item.id !== action.payload.id
       );
-      console.log(removeTodo);
+      // console.log(removeTodo);
       return {
         ...state,
         data: removeTodo
