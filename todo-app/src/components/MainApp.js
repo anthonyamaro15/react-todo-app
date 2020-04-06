@@ -5,17 +5,16 @@ import MainForm from "./Form";
 
 const MainApp = () => {
   const dispatch = useDispatch();
-  const reducer = useSelector(state => ({
-    ...state.todoReducer
+  const reducer = useSelector((state) => ({
+    ...state.todoReducer,
   }));
   const { data } = reducer;
-  console.log(data);
 
-  const createTodo = item => {
+  const createTodo = (item) => {
     dispatch({ type: "CREATE_TODO", payload: item });
   };
 
-  const deleteTodo = item => {
+  const deleteTodo = (item) => {
     dispatch({ type: "DELETE_TODO", payload: item });
   };
   return (
@@ -23,7 +22,7 @@ const MainApp = () => {
       <h1>Todo App</h1>
       <MainForm createTodo={createTodo} />
       <section className="todo-section">
-        {data.map(todo => (
+        {data.map((todo) => (
           <NewTodo
             key={todo.id}
             todo={todo}
